@@ -4,18 +4,18 @@ import zipfile, os
 from io import BytesIO
 from trame.widgets import vuetify
 
-from fileio import set_json_fileio
-from initialization import set_json_initialization
-from logger import log
-from materials import set_json_materials
-from numerics import set_json_numerics
-from physics import set_json_physics
-from su2_io import save_json_cfg_file, save_su2mesh
-from su2_json import updateBCDictListfromJSON
-from uicard import server
-from mesh import root , mesh_actor, mesh_mapper
-from vtk_helper import renderer
-from solver import proc_SU2, set_json_solver
+from .fileio import set_json_fileio
+from .initialization import set_json_initialization
+from .logger import log
+from .materials import set_json_materials
+from .numerics import set_json_numerics
+from .physics import set_json_physics
+from .su2_io import save_json_cfg_file, save_su2mesh
+from .su2_json import updateBCDictListfromJSON
+from .uicard import server
+from .mesh import root , mesh_actor, mesh_mapper
+from .vtk_helper import renderer
+from .solver import proc_SU2, set_json_solver
 
 
 from pathlib import Path
@@ -255,6 +255,7 @@ def download_case():
 # function to create a new case
 @ctrl.trigger("create_new_case")
 def create_new_case():
+    state.new_case_name = state.new_case_name.strip().lower().replace(" ", "_")
     set_cases_list()
 
     if state.delete_all_previous_cases == True:
@@ -272,7 +273,7 @@ def create_new_case():
 
         state.show_case_name_dialog = False
         reset_values()
-        state.case_name = state.new_case_name.replace(" ", "_")
+        state.case_name = state.new_case_name
         try:
             os.makedirs(os.path.join(BASE, "user", state.case_name))
             log("info", f"Case '{state.case_name}' created successfully.")
@@ -502,8 +503,6 @@ def reset_values():
     state.su2_meshfile="mesh_out.su2"
 
     state.selectedBoundary = 0
-
-    mesh_actor_list = [{"id":0,"name":"internal","mesh":mesh_actor}]
 
     mesh_actor.SetMapper(mesh_mapper)
     mesh_actor.SetObjectName("initial_square")

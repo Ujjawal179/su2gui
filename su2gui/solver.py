@@ -8,10 +8,10 @@
 
 # definition of ui_card
 import shutil
-from uicard import ui_card, ui_subcard, server
+from .uicard import ui_card, ui_subcard, server
 from trame.widgets import vuetify
-from su2_json import *
-from su2_io import save_su2mesh, save_json_cfg_file
+from .su2_json import *
+from .su2_io import save_su2mesh, save_json_cfg_file
 
 # check if a file is opened by another process
 #import psutil
@@ -30,11 +30,11 @@ import vtk
 from vtkmodules.vtkCommonDataModel import vtkDataObject
 
 # import the grid from the mesh module
-from mesh import *
-from vtk_helper import *
+from .mesh import *
+from .vtk_helper import *
 
 # Logging function
-from logger import log, update_su2_logs
+from .logger import log, update_su2_logs
 
 # matplotlib
 import matplotlib

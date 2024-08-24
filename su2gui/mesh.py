@@ -1,10 +1,10 @@
 # mesh gittree menu
 
 # definition of ui_card
-from uicard import ui_card, ui_subcard, server
+from .uicard import ui_card, ui_subcard, server
 from trame.widgets import vuetify
-from su2_json import *
-from materials import *
+from .su2_json import *
+from .materials import *
 #from vtk_helper import *
 
 import vtk

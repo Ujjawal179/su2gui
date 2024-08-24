@@ -16,9 +16,9 @@
 # 4) define any global state variables that might be needed
 
 # definition of ui_card
-from uicard import ui_card, ui_subcard, server
+from .uicard import ui_card, ui_subcard, server
 from trame.widgets import vuetify
-from su2_json import *
+from .su2_json import *
 
 state, ctrl = server.state, server.controller
 

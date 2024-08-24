@@ -1,12 +1,11 @@
 
 # ##################################### JSON ##############################
-from uicard import ui_card, ui_subcard, server
+from .uicard import ui_card, ui_subcard, server
 
 # Logging function
-from logger import log
+from .logger import log
 
-import json,jsonschema
-from jsonschema import validate, ValidationError, SchemaError
+import json
 
 from pathlib import Path
 BASE = Path(__file__).parent

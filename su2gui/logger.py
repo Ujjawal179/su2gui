@@ -1,5 +1,5 @@
 from datetime import datetime
-from uicard import server
+from .uicard import server
 import logging
 from trame.widgets import vuetify, markdown
 from pathlib import Path
@@ -33,7 +33,7 @@ logging.basicConfig(
 
 # Get the logger for the current module
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # Allow DEBUG logs for this module
+logger.setLevel(logging.INFO)
 
 # Ensure the logger uses the same formatter as the root logger
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
@@ -195,7 +195,7 @@ def Error_dialog_card():
         with vuetify.VContainer(fluid=True):
             markdown.Markdown(
                 content = ('error_msg', state.error_msg), 
-                style = "padding: 3rem; color: Red; background-color: white"
+                style = "padding: 0.5rem 3rem; color: Red; background-color: white"
             )
             vuetify.VBtn("Close",click=(hide_error_dialog_card)
                         )
@@ -253,7 +253,7 @@ def logs_tab():
                             vuetify.VIcon("mdi-arrow-down-bold-box-outline")
                         markdown.Markdown(
                           content = ('md_content', state.md_content), 
-                          style = "padding: 0.5rem 3rem; color: black; background-color: white"
+                          style = "padding: 3rem; color: black; background-color: white"
                         )
                   with vuetify.VTabItem(
                     value=(1,), style="width: 100%; height: 100%;"

@@ -1,7 +1,7 @@
 # vtk_helper.py
 # helper functions for vtk and rendering related actions
 
-import vtk
+# import vtk
 # vtm reader
 #from paraview.vtk.vtkIOXML import vtkXMLMultiBlockDataReader
 #from vtkmodules.web.utils import mesh as vtk_mesh
@@ -44,10 +44,10 @@ from vtkmodules.vtkInteractionStyle import vtkInteractorStyleSwitch  # noqa
 import vtkmodules.vtkRenderingOpenGL2  # noqa
 
 # mesh_mapper
-from mesh import *
+from .mesh import *
 
 # Logging function
-from logger import log
+from .logger import log
 
 # default visibility of the actors
 state.cube_axes_visibility = True

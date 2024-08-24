@@ -2,18 +2,16 @@ from trame.widgets import vuetify, markdown
 from datetime import date
 
 # functions to update GUI after user enters a new key-value pair in jsonData
-from fileio import set_json_fileio
-from initialization import set_json_initialization
-from materials import set_json_materials
-from numerics import set_json_numerics
-from physics import set_json_physics
-from solver import set_json_solver
-from su2_json import updateBCDictListfromJSON
-from su2_io import createjsonMarkers
-
-
-from uicard import server
-from logger import log
+from .fileio import set_json_fileio
+from .initialization import set_json_initialization
+from .materials import set_json_materials
+from .numerics import set_json_numerics
+from .physics import set_json_physics
+from .solver import set_json_solver
+from .su2_json import updateBCDictListfromJSON
+from .su2_io import createjsonMarkers
+from .uicard import server
+from .logger import log
 
 # for JSON schema validation
 # imports for json schema

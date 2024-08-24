@@ -7,10 +7,10 @@
 # 4) define any global state variables that might be needed
 
 # definition of ui_card
-from uicard import ui_card, ui_subcard, ui_card_children_only,ui_card_parent_only, server
+from .uicard import ui_card, ui_subcard, ui_card_children_only,ui_card_parent_only, server
 from trame.widgets import vuetify
-from su2_json import *
-from materials import *
+from .su2_json import *
+from .materials import *
 state, ctrl = server.state, server.controller
 
 # for dialog cards:

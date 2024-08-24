@@ -7,13 +7,13 @@
 # 4) define any global state variables that might be needed
 
 # definition of ui_card
-from uicard import ui_card, ui_subcard, server
+from .uicard import ui_card, ui_subcard, server
 from trame.widgets import vuetify
-from su2_json import *
+from .su2_json import *
 
 # import the grid from the mesh module
-from mesh import *
-from vtk_helper import *
+from .mesh import *
+from .vtk_helper import *
 
 import vtk
 from vtkmodules.vtkCommonDataModel import vtkDataObject

@@ -1,0 +1,7 @@
+include su2gui/user/*.json
+include su2gui/user/*.su2
+include su2gui/user/*.csv
+include su2gui/user/*.dat
+
+include su2gui/img/*
+include su2gui/icons/*

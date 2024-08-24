@@ -19,21 +19,21 @@ from trame.widgets import trame
 from datetime import date
 
 # Import json setup for writing the config file in json and cfg file format.
-from su2_json import *
+from .su2_json import *
 # Export su2 mesh file.
-from su2_io import save_su2mesh, save_json_cfg_file
+from .su2_io import save_su2mesh, save_json_cfg_file
 #
-from vtk_helper import *
+from .vtk_helper import *
 # 
-from cases import update_manage_case_dialog_card, manage_case_dialog_card, case_name_dialog_card, case_args
+from .cases import update_manage_case_dialog_card, manage_case_dialog_card, case_name_dialog_card, case_args
 #
 # Definition of ui_card and the server.
-from uicard import ui_card, server
+from .uicard import ui_card, server
 
 # Logging funtions
-from logger import log, clear_logs , Error_dialog_card, Warn_dialog_card, logs_tab
+from .logger import log, clear_logs , Error_dialog_card, Warn_dialog_card, logs_tab
 
-from config import *
+from .config import *
 
 import vtk
 # vtm reader
@@ -83,21 +83,21 @@ import vtkmodules.vtkRenderingOpenGL2  # noqa
 # We then call the card in the SinglePageWithDrawerLayout() function.       #
 #############################################################################
 # gittree menu : import mesh tab                                            #
-from mesh import *
+from .mesh import *
 # gittree menu : import physics tab                                         #
-from physics import *
+from .physics import *
 # gittree menu : import materials tab                                       #
-from materials import *
+from .materials import *
 # gittree menu : import numerics tab                                        #
-from numerics import *
+from .numerics import *
 # gittree menu : import boundaries tab                                      #
-from boundaries import *
+from .boundaries import *
 # gittree menu : import solver tab                                          #
-from solver import *
+from .solver import *
 # gittree menu : import initialization tab                                  #
-from initialization import *
-# gittree menu : import file I/O tab                                        #
-from fileio import *
+from .initialization import *
+# gittree menu : i.mport file I/O tab                                        #
+from .fileio import *
 #############################################################################
 
 
@@ -107,7 +107,7 @@ from fileio import *
 state, ctrl = server.state, server.controller
 
 
-from pipeline import PipelineManager
+from .pipeline import PipelineManager
 from pathlib import Path
 BASE = Path(__file__).parent
 
@@ -1100,6 +1100,8 @@ def load_cfg_file(cfg_file_upload, **kwargs):
     # if yes set it to a list of 2 elements with same value for proper working
     if 'OUTPUT_WRT_FREQ' in cfg_dict and isinstance(cfg_dict['OUTPUT_WRT_FREQ'], int):
       cfg_dict['OUTPUT_WRT_FREQ']= [cfg_dict['OUTPUT_WRT_FREQ']] * 2
+    elif 'OUTPUT_WRT_FREQ' not in cfg_dict:
+      cfg_dict['OUTPUT_WRT_FREQ'] = [10, 250]
 
     # Write the dictionary to a JSON file
     # with open(BASE / "user" / state.filename_json_export, 'w') as f:
@@ -1162,7 +1164,7 @@ def pipeline_widget():
     )
 
 ###############################################################
-# checnge edge visibility
+# change edge visibility
 ###############################################################
 @state.change("vtkEdgeVisibility")
 def changevtkEdgeVisibility(vtkEdgeVisibility, **kwargs):
@@ -1513,7 +1515,7 @@ def check_su2():
     else:
         print("\nSU2 is not installed.")
         print("Please install SU2 from the following link:")
-        print("https://su2code.github.io/download/")
+        print("https://su2code.github.io/download.html")
 
         # Prompt user to continue or exit
         response = input("Would you like to continue without SU2? (y/n): ").strip().lower()

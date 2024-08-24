@@ -1,5 +1,5 @@
 import vtk
-from su2_json import *
+from .su2_json import *
 
 from pathlib import Path
 BASE = Path(__file__).parent

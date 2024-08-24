@@ -14,7 +14,7 @@ server = get_server(client_type='vue2')
 
 
 # Logging function
-from logger import log
+from .logger import log
 
 # Main definition of the card for all gittree items.
 # note that "active_ui" points to a state change

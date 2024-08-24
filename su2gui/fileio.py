@@ -15,9 +15,9 @@
 #    that are not simply the output of the json options.
 
 # definition of ui_card
-from uicard import ui_card, ui_subcard, server
+from .uicard import ui_card, ui_subcard, server
 from trame.widgets import vuetify
-from su2_json import *
+from .su2_json import *
 
 state, ctrl = server.state, server.controller
 
@@ -44,7 +44,7 @@ def set_json_fileio():
     # if state.restart_filename.endswith(".dat") or state.restart_filename.endswith(".csv"):
     #    state.restart_filename = state.restart_filename[:-4]
     state.fileio_restart_frequency = state.jsonData['OUTPUT_WRT_FREQ'][0]
-    state.fileio_restart_binary = bool('OUTPUT_FILES' in state.jsonData and not "RESTART_ASCII" in  state.jsonData['OUTPUT_FILES'])
+    state.fileio_restart_binary = bool( not "RESTART_ASCII" in  state.jsonData['OUTPUT_FILES'])
     state.fileio_restart_overwrite = bool(state.jsonData['WRT_RESTART_OVERWRITE'])
   except KeyError as e:
     log("warn", f"Key '{e.args[0]}' not found in state.jsonData")
